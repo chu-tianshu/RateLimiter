@@ -14,9 +14,9 @@
 
         public async Task InvokeAsync(HttpContext context)
         {
-            if (BucketManagementService.RemainingTokenCount > 0)
+            if (TokenBucketManagementService.RemainingTokenCount > 0)
             {
-                BucketManagementService.ConsumeOneToken();
+                TokenBucketManagementService.ConsumeOneToken();
                 await this.next(context);
             }
             else

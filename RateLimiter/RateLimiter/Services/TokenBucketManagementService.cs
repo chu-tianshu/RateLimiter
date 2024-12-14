@@ -4,7 +4,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class BucketManagementService : BackgroundService
+    public class TokenBucketManagementService : BackgroundService
     {
         private const int BucketSize = 5;
         private const int TokensRefilledPerSecond = 1;

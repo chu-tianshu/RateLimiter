@@ -9,7 +9,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHostedService<BucketManagementService>();
+builder.Services.AddHostedService<TokenBucketManagementService>();
+builder.Services.AddHostedService<LeakingBucketManagementService>();
 
 var app = builder.Build();
 
@@ -24,7 +25,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.UseMiddleware<TokenBucketRateLimiterMiddleware>();
+// app.UseMiddleware<TokenBucketRateLimiterMiddleware>();
+app.UseMiddleware<LeakingBucketRateLimiterMiddleware>();
 
 app.MapControllers();
 
